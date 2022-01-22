@@ -1,50 +1,63 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.io.PrintWriter;
-import java.io.File;
+import java.io.PrintStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class MainThread {
 
-    private static int threads = 8;
+    private static int[] threads = { 1, 2, 4, 8 };
     private static int[] range = { 15, 250 };
 
     private static ArrayList<Thread> sideThreads = new ArrayList<Thread>();
     private static ArrayList<Integer[]> intervalle = new ArrayList<Integer[]>();
     private static ArrayList<Integer> primes = new ArrayList<Integer>();
+    private static ArrayList<String> timeReport = new ArrayList<String>();
 
     public static void main(String[] args) {
 
         MainThread MeinThread = new MainThread();
+        MainThread.printConsoleToTxt();
 
-        intervalle = MeinThread.getIntervalls(range, threads);
+        for (int i = 0; i < threads.length; i++) {
 
-        System.out.println("Thread ID: 0 Start the main Thread");
-        System.out.println("Numbers range: " + Arrays.toString(range));
-        System.out.println("Pararell threads: " + intervalle.size());
-        System.out.println("-------------------");
+            sideThreads.clear();
+            intervalle.clear();
+            primes.clear();
 
-        long startTime = System.nanoTime();
+            intervalle = MeinThread.getIntervalls(range, threads[i]);
 
-        MainThread.startWorkers(intervalle, primes, sideThreads);
+            System.out.println("");
+            System.out.println("Thread ID: 0 Start the main Thread");
+            System.out.println("Numbers range: " + Arrays.toString(range));
+            System.out.println("Pararell threads: " + intervalle.size());
+            System.out.println("-------------------");
 
-        for (int i = 0; i < sideThreads.size(); i++) {
-            try {
-                sideThreads.get(i).join();
-                // Thread.sleep(1000);
-            } catch (InterruptedException e) {
-            }
+            long startTime = System.nanoTime();
+
+            MainThread.startWorkers(intervalle, primes, sideThreads);
+            MainThread.joinThreads(sideThreads);
+           
+            long endTime = System.nanoTime();
+            long totalTime = endTime - startTime;
+
+            System.out.println("-------  End of processing ------------");
+            System.out.println("Thread ID: 0 All found Primes: " + primes.toString());
+            System.out.println("Processing time in nanoseconds: " + totalTime);
+
+            timeReport.add("Threads: " + threads[i] + " Total processing time: " + totalTime);
+
+            MainThread.printArrayToTxt(primes, range);
 
         }
 
-        long endTime = System.nanoTime();
-        long totalTime = endTime - startTime;
-
-        System.out.println("-------  End of processing ------------");
-        System.out.println("Thread ID: 0 All found Primes: " + primes.toString());
-        System.out.println("Processing time in nanoseconds: " + totalTime);
-
-        MainThread.printArrayToTxt(primes, range);
-
+        System.out.println("");
+        System.out.println("-------------------- Time for number of threads summary -----------------------");
+        for (int z = 0; z < timeReport.size(); z++) {
+            System.out.println(timeReport.get(z));
+        }
+        System.out.println("Die Aufteilung der Aufgabe auf mehrere Threads hat einen messbaren Vorteil für die Verarbeitungszeit gebracht. Das beste Ergebnis wurde bei 2 Threads erzielt.");
+        System.out.println("Splitting the task into multiple threads yielded a measurable benefit in processing time. The best time result was obtained for 2 threads.");
     }
 
     private ArrayList<Integer[]> getIntervalls(int[] range, int threads) {
@@ -89,19 +102,57 @@ public class MainThread {
         }
     }
 
+    private static void joinThreads(ArrayList<Thread> sideThreads) {
+        for (int y = 0; y < sideThreads.size(); y++) {
+            try {
+                sideThreads.get(y).join();
+            } catch (InterruptedException e) {
+            }
+
+        }
+
+    }
+
     private static void printArrayToTxt(ArrayList<Integer> primes, int[] range) {
 
-        try {
-            PrintWriter pr = new PrintWriter("Primes.txt");
+        boolean append = false;
+        boolean autoFlush = false;
 
-            pr.println("Prime numbers found in the range: " + range.toString());
+        try {
+            PrintStream pr = new PrintStream(
+                    new FileOutputStream("primes.txt", append), autoFlush);
+
+            pr.println("Prime numbers found in the range: " + Arrays.toString(range));
+            pr.println("-----------------------");
+
             for (int i = 0; i < primes.size(); i++) {
                 pr.println(primes.get(i));
             }
             pr.close();
+
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("No such file exists.");
         }
+        System.out.println("Prime numbers saved to file: Primes.txt");
     }
+
+    private static void printConsoleToTxt() {
+
+        boolean append = true;
+        boolean autoFlush = false;
+
+        try {
+
+            PrintStream out = new PrintStream(
+                    new FileOutputStream("consoleOutput.txt", append), autoFlush);
+            out.println("------- Console output ---------");
+            System.setOut(out);
+
+        } catch (IOException e1) {
+            System.out.println("Error during reading/writing");
+        }
+
+    }
+
 }

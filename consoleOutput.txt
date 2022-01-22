@@ -1,0 +1,90 @@
+------- Console output ---------
+
+Thread ID: 0 Start the main Thread
+Numbers range: [15, 250]
+Pararell threads: 1
+-------------------
+Thread ID: 1 Starts parrallel thread
+Thread ID: 1 Numbers interval: [15, 249]
+Thread ID: 1 Prime numbers: [17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241]
+-------  End of processing ------------
+Thread ID: 0 All found Primes: [17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241]
+Processing time in nanoseconds: 3746400
+Prime numbers saved to file: Primes.txt
+
+Thread ID: 0 Start the main Thread
+Numbers range: [15, 250]
+Pararell threads: 2
+-------------------
+Thread ID: 1 Starts parrallel thread
+Thread ID: 2 Starts parrallel thread
+Thread ID: 1 Numbers interval: [15, 132]
+Thread ID: 2 Numbers interval: [133, 250]
+Thread ID: 1 Prime numbers: [17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131]
+Thread ID: 2 Prime numbers: [137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241]
+-------  End of processing ------------
+Thread ID: 0 All found Primes: [17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241]
+Processing time in nanoseconds: 1430000
+Prime numbers saved to file: Primes.txt
+
+Thread ID: 0 Start the main Thread
+Numbers range: [15, 250]
+Pararell threads: 4
+-------------------
+Thread ID: 1 Starts parrallel thread
+Thread ID: 1 Numbers interval: [15, 73]
+Thread ID: 2 Starts parrallel thread
+Thread ID: 1 Prime numbers: [17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71]
+Thread ID: 3 Starts parrallel thread
+Thread ID: 4 Starts parrallel thread
+Thread ID: 2 Numbers interval: [74, 132]
+Thread ID: 4 Numbers interval: [192, 250]
+Thread ID: 2 Prime numbers: [79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131]
+Thread ID: 4 Prime numbers: [193, 197, 199, 211, 223, 227, 229, 233, 239, 241]
+Thread ID: 3 Numbers interval: [133, 191]
+Thread ID: 3 Prime numbers: [137, 139, 149, 151, 157, 163, 167, 173, 179, 181]
+-------  End of processing ------------
+Thread ID: 0 All found Primes: [17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181]
+Processing time in nanoseconds: 2411200
+Prime numbers saved to file: Primes.txt
+
+Thread ID: 0 Start the main Thread
+Numbers range: [15, 250]
+Pararell threads: 8
+-------------------
+Thread ID: 1 Starts parrallel thread
+Thread ID: 1 Numbers interval: [15, 44]
+Thread ID: 2 Starts parrallel thread
+Thread ID: 3 Starts parrallel thread
+Thread ID: 1 Prime numbers: [17, 19, 23, 29, 31, 37, 41, 43]
+Thread ID: 4 Starts parrallel thread
+Thread ID: 3 Numbers interval: [75, 104]
+Thread ID: 2 Numbers interval: [45, 74]
+Thread ID: 4 Numbers interval: [105, 134]
+Thread ID: 2 Prime numbers: [47, 53, 59, 61, 67, 71, 73]
+Thread ID: 3 Prime numbers: [79, 83, 89, 97, 101, 103]
+Thread ID: 5 Starts parrallel thread
+Thread ID: 8 Starts parrallel thread
+Thread ID: 8 Numbers interval: [225, 250]
+Thread ID: 4 Prime numbers: [107, 109, 113, 127, 131]
+Thread ID: 7 Starts parrallel thread
+Thread ID: 6 Starts parrallel thread
+Thread ID: 6 Numbers interval: [165, 194]
+Thread ID: 7 Numbers interval: [195, 224]
+Thread ID: 8 Prime numbers: [227, 229, 233, 239, 241]
+Thread ID: 5 Numbers interval: [135, 164]
+Thread ID: 7 Prime numbers: [197, 199, 211, 223]
+Thread ID: 6 Prime numbers: [167, 173, 179, 181, 191, 193]
+Thread ID: 5 Prime numbers: [137, 139, 149, 151, 157, 163]
+-------  End of processing ------------
+Thread ID: 0 All found Primes: [17, 19, 23, 29, 31, 37, 41, 43, 79, 83, 89, 97, 101, 103, 47, 53, 59, 61, 67, 71, 73, 107, 109, 113, 127, 131, 227, 229, 233, 239, 241, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 137, 139, 149, 151, 157, 163]
+Processing time in nanoseconds: 4751700
+Prime numbers saved to file: Primes.txt
+
+-------------------- Time for number of threads summary -----------------------
+Threads: 1 Total processing time: 3746400
+Threads: 2 Total processing time: 1430000
+Threads: 4 Total processing time: 2411200
+Threads: 8 Total processing time: 4751700
+Die Aufteilung der Aufgabe auf mehrere Threads hat einen messbaren Vorteil für die Verarbeitungszeit gebracht. Das beste Ergebnis wurde bei 2 Threads erzielt. Wenn die Anzahl der Threads über 2 hinausgeht, erhöht sich die Berechnungszeit.
+Splitting the task into multiple threads yielded a measurable benefit in processing time. The best time result was obtained for 2 threads. Increasing the number of threads beyond 2 increases the computation time.
