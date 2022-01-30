@@ -60,6 +60,13 @@ public class MainThread {
         System.out.println("Splitting the task into multiple threads yielded a measurable benefit in processing time. The best time result was obtained for 2 threads.");
     }
 
+     /**
+     * Divides range of numbers through given number of threads 
+     *
+     * @param range range of numbers to divide 
+     * @param threads number of threads  
+     * @return list of 
+     */
     private ArrayList<Integer[]> getIntervalls(int[] range, int threads) {
 
         int max = range[1] - range[0];
