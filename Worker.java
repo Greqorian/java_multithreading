@@ -8,6 +8,14 @@ public class Worker implements Runnable {
     private ArrayList<Integer> primes;
     private ArrayList<Integer> numbers;
 
+     /**
+     * Worker constructor
+     *
+     * @param oneInterval interval of numbers
+     * @param id number id of the thread 
+     * @param primes array of prime numbers
+     *
+     */
     public Worker(Integer[] oneInterval, int id, ArrayList<Integer> primes) {
         this.oneInterval = oneInterval;
         this.id = id;
@@ -19,6 +27,11 @@ public class Worker implements Runnable {
         return this.numbers;
     }
 
+    /**
+     * get thread id
+     *
+     * @return thread id
+     */
     public int getId() {
         return this.id;
     }

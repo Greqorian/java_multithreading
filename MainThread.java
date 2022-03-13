@@ -7,13 +7,19 @@ import java.io.IOException;
 public class MainThread {
 
     private static int[] threads = { 1, 2, 4, 8 };
-    private static int[] range = { 15, 250 };
+    private static int[] range = { 15, 270 };
 
     private static ArrayList<Thread> sideThreads = new ArrayList<Thread>();
     private static ArrayList<Integer[]> intervalle = new ArrayList<Integer[]>();
     private static ArrayList<Integer> primes = new ArrayList<Integer>();
     private static ArrayList<String> timeReport = new ArrayList<String>();
 
+    /**
+     * Pawlak Gregor 563317
+     * Übung 2
+     * Nebenläufige Programmierung
+     *
+     */
     public static void main(String[] args) {
 
         MainThread MeinThread = new MainThread();
@@ -65,7 +71,7 @@ public class MainThread {
      *
      * @param range range of numbers to divide 
      * @param threads number of threads  
-     * @return list of 
+     * @return list of threads
      */
     private ArrayList<Integer[]> getIntervalls(int[] range, int threads) {
 
@@ -94,6 +100,13 @@ public class MainThread {
         return result;
     }
 
+    /**
+     * Initialise Workers which return primes and threads
+     *
+     * @param intervals array of intervals  
+     * @param primes array of prime number
+     * @param sideThreads array of threads
+     */
     private static void startWorkers(ArrayList<Integer[]> intervals, ArrayList<Integer> primes,
             ArrayList<Thread> sideThreads) {
 
@@ -109,6 +122,11 @@ public class MainThread {
         }
     }
 
+    /**
+     * Joins threads 
+     *
+     * @param sideThreads array of threads
+     */
     private static void joinThreads(ArrayList<Thread> sideThreads) {
         for (int y = 0; y < sideThreads.size(); y++) {
             try {
@@ -120,6 +138,12 @@ public class MainThread {
 
     }
 
+     /**
+     * Prints primes to primes.text 
+     *
+     * @param primes prime numbers
+     * @param range numbers in range
+     */
     private static void printArrayToTxt(ArrayList<Integer> primes, int[] range) {
 
         boolean append = false;
@@ -144,6 +168,10 @@ public class MainThread {
         System.out.println("Prime numbers saved to file: Primes.txt");
     }
 
+     /**
+     * Prints console output to file
+     *
+     */
     private static void printConsoleToTxt() {
 
         boolean append = true;
